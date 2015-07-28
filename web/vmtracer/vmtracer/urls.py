@@ -10,7 +10,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^static/(?P<path>(?:js|css|img)/.*)$', 'django.contrib.staticfiles.views.serve', kwargs={'document_root': settings.STATIC_ROOT}),
+    url(r'^static/(?P<path>(?:js|css|img)/.*)$', 'django.contrib.staticfiles.views.serve', ),
     url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs={
                 'path': '/static/index.html'}),
+    url(r'^init/', main_views.init),
 )
