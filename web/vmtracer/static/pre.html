@@ -1,0 +1,10 @@
+<div id='info-container' >
+    <h1>VM tracer</h1>
+
+
+    <div>
+        <div ng-repeat='trace in initData.rawData.trace_info' class='tracer-con'>
+        <a class='tracer-info' href='#/app/intro/{{trace.id}}'>{{trace.name}}</a>
+        </div>
+    </div>
+</div>

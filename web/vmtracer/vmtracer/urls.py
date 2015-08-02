@@ -14,4 +14,6 @@ urlpatterns = patterns('',
     url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs={
                 'path': '/static/index.html'}),
     url(r'^init/', main_views.init),
+    url(r'^init_pre/', main_views.init_pre),
+    url(r'^get_log/', main_views.get_log),
 )

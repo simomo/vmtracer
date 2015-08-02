@@ -1,0 +1,48 @@
+
+<div id='info-container-app' >
+    <div id='goback'><a href='#/'>Home</a></div>
+    <div ng-show='params.traceId=="intro"'>
+        <h3>Description</h3>
+        <h5>{{initData.rawData.trace_info[0].description}}</h5>
+        <h3>Hosts</h3>
+        <h5 ng-repeat-start="host in initData.rawData.host_info">{{host.hostname}}</h5>
+        <p>{{host.hostip}}</p>
+        <p ng-repeat-end>{{host.buildinfo}}</p>
+
+        <h3>VMs</h3>
+        <div ng-repeat="vm in initData.rawData.vm_info">
+            <h4>{{vm.vmname}}</h5>
+            <p>{{vm.vmtype}}</p>
+            <div class='vmconfig'>
+                <div class='vmconfig-row' ng-repeat='(configKey, configValue) in vm.vmconfig'>
+                    <div class='vmconfig-k'>{{configKey}}</div>
+                    <div class='vmconfig-v'>{{configValue}}</div>
+                    <div style='clear: both'></div>
+                </div>
+            </div>
+        </div>
+
+<!--
+        <p ng-repeat-end>{{vm.vmconfig}}</p>
+-->
+    </div>
+
+    <div ng-show='params.traceId!="intro"'>
+        <h3>Operation:</h3>
+        <h5>Type: {{curOp.vmoptname}}</h5>
+        <h5>Result: {{curOp.result}}</h5>
+        <!--
+        <h5>{{curOp.starttime | secondsToDateTime}} - {{curOp.endtime | secondsToDateTime}}</h5>
+        -->
+        <h5>VM name: {{curOp.vmname}}</h5>
+        <h5>VM type: {{curOp.vmtype}}</h5>
+        <h3>Log:</h3>
+        <div class='log-box' ng-repeat='(file_name, lines) in curOp.logs'>
+            <span class='log-file-name'>{{file_name}}</span>
+            <div ng-repeat='log in lines'>
+                <div style='width:100%' ng-bind-html='log.line | unsafe'></div>
+            </div>
+        </div>
+    </div>
+    
+</div>

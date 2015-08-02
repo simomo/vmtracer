@@ -3,8 +3,10 @@
 <head>
     <title>VM Tracer</title>
     <script src='/static/js/angular.js'></script>
+    <script src='/static/js/angular-route.js'></script>
+    <script src='/static/js/angular-animate.js'></script>
     <script src='/static/js/jquery-1.11.3.js'></script>
-    <script src='/static/js/serverData.js'></script>
+    <!--  <script src='/static/js/serverData.js'></script> -->
     <script src='/static/js/main.js'></script>
     <script src='/static/vis/dist/vis.js'></script>
     <link rel="stylesheet" href="/static/vis/dist/vis.css">
@@ -12,11 +14,13 @@
 </head>
 
 <body>
+
 <div id='app-root' ng-controller='appRoot'>
-    <div id='info-container' ng-controller='infoCtl'>
+    <div class='view-animate-container'>
+        <div ng-view class='view-animate'></div>
     </div>
 
-    <div id='timeline-container' ng-controller='timelineCtl' timeline>
+    <div id='timeline-container' ng-controller='timelineCtl'  timeline ng-show='showTimeline'>
     </div>
 </div>
 </body>
